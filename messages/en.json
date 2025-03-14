@@ -1,0 +1,56 @@
+{
+    "navigation": {
+        "home": "Home",
+        "about": "About",
+        "services": "Services",
+        "projects": "Projects",
+        "testimonials": "Testimonials",
+        "contact": "Contact",
+        "login": "Login",
+        "getStarted": "Get Started",
+        "learnMore": "Learn More"
+    },
+    "hero": {
+        "title": "Innovative Software Solutions",
+        "subtitle": "Transforming ideas into powerful software solutions for businesses of all sizes.",
+        "cta": "Get Started",
+        "learnMore": "Learn More"
+    },
+    "features": {
+        "title": "Our Services",
+        "subtitle": "What we offer",
+        "webDev": "Web Development",
+        "mobileDev": "Mobile Development",
+        "cloudSolutions": "Cloud Solutions",
+        "consulting": "IT Consulting",
+        "dataAnalytics": "Data Analytics",
+        "cybersecurity": "Cybersecurity"
+    },
+    "projects": {
+        "title": "Our Projects",
+        "subtitle": "See our work",
+        "viewAll": "View All"
+    },
+    "testimonials": {
+        "title": "What Our Clients Say",
+        "subtitle": "Testimonials"
+    },
+    "contact": {
+        "title": "Get in Touch",
+        "subtitle": "Contact us",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "send": "Send Message",
+        "subject": "Subject",
+        "location": "Our Location",
+        "emailUs": "Email Us",
+        "callUs": "Call Us",
+        "businessHours": "Business Hours"
+    },
+    "footer": {
+        "rights": "All rights reserved",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "navigation": {
+        "home": "Início",
+        "about": "Sobre",
+        "services": "Serviços",
+        "projects": "Projetos",
+        "testimonials": "Depoimentos",
+        "contact": "Contato",
+        "login": "Entrar",
+        "getStarted": "Começar",
+        "learnMore": "Saiba Mais"
+    },
+    "hero": {
+        "title": "Soluções de Software Inovadoras",
+        "subtitle": "Transformando ideias em poderosas soluções de software para empresas de todos os tamanhos.",
+        "cta": "Começar Agora",
+        "learnMore": "Saiba Mais"
+    },
+    "features": {
+        "title": "Nossos Serviços",
+        "subtitle": "O que oferecemos",
+        "webDev": "Desenvolvimento Web",
+        "mobileDev": "Desenvolvimento Mobile",
+        "cloudSolutions": "Soluções em Nuvem",
+        "consulting": "Consultoria em TI",
+        "dataAnalytics": "Análise de Dados",
+        "cybersecurity": "Cibersegurança"
+    },
+    "projects": {
+        "title": "Nossos Projetos",
+        "subtitle": "Veja nosso trabalho",
+        "viewAll": "Ver Todos"
+    },
+    "testimonials": {
+        "title": "O Que Nossos Clientes Dizem",
+        "subtitle": "Depoimentos"
+    },
+    "contact": {
+        "title": "Entre em Contato",
+        "subtitle": "Fale conosco",
+        "name": "Nome",
+        "email": "Email",
+        "message": "Mensagem",
+        "send": "Enviar Mensagem",
+        "subject": "Assunto",
+        "location": "Nossa Localização",
+        "emailUs": "Envie-nos um Email",
+        "callUs": "Ligue para Nós",
+        "businessHours": "Horário de Funcionamento"
+    },
+    "footer": {
+        "rights": "Todos os direitos reservados",
+        "privacy": "Política de Privacidade",
+        "terms": "Termos de Serviço"
+    }
+}
