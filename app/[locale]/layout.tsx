@@ -35,10 +35,19 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         notFound();
     }
 
+    // Load messages for the current locale
+    let messages;
+    try {
+        messages = (await import(`../../messages/${locale}.json`)).default;
+    } catch (error) {
+        console.error(`Could not load messages for locale: ${locale}`, error);
+        notFound();
+    }
+
     return (
         <html lang={locale} suppressHydrationWarning>
             <body className={inter.className}>
-                <NextIntlClientProvider locale={locale} messages={{}}>
+                <NextIntlClientProvider locale={locale} messages={messages}>
                     <ThemeProvider
                         attribute="class"
                         defaultTheme="system"
