@@ -1,34 +1,17 @@
-import { NextRequest, NextResponse } from 'next/server';
+import createMiddleware from 'next-intl/middleware';
+import { defaultLocale, locales } from './i18n/settings';
 
-// Definir locales diretamente no middleware para evitar problemas de importação
-const locales = ['en', 'pt'];
-const defaultLocale = 'en';
-
-export function middleware(request: NextRequest) {
-    // Verifica se o pathname já começa com uma localidade
-    const pathname = request.nextUrl.pathname;
-
-    // Verifica se o pathname já tem uma localidade
-    const pathnameHasLocale = locales.some(
-        (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-    );
-
-    if (pathnameHasLocale) return NextResponse.next();
-
-    // Redireciona se não tiver localidade
-    const locale = defaultLocale;
-
-    // e.g. incoming request is /products
-    // The new URL is /en/products
-    return NextResponse.redirect(
-        new URL(
-            `/${locale}${pathname === '/' ? '' : pathname}`,
-            request.url
-        )
-    );
-}
+// Este middleware é criado pelo next-intl e gerencia a detecção de localidade
+export default createMiddleware({
+    // Uma lista de todas as localidades que são suportadas
+    locales: locales,
+    // Se a localidade solicitada não for suportada, usamos a padrão
+    defaultLocale: defaultLocale,
+    // Opcional: Redirecionar para a localidade padrão quando a raiz é acessada
+    localePrefix: 'as-needed',
+});
 
 export const config = {
-    // Matcher ignoring `/_next/` and `/api/`
+    // Matcher ignorando `/_next/` e `/api/`
     matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)'],
 }; 

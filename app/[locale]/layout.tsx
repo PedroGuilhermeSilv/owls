@@ -2,6 +2,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { locales } from "@/i18n/settings";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
@@ -22,27 +23,20 @@ export function generateStaticParams() {
 // Define the layout props with proper typing compatible with Next.js
 export type LocaleLayoutProps = {
     children: ReactNode;
-    params: Promise<{ locale: string }>; // Use Promise for dynamic params
+    params: { locale: string };
 };
 
 // Use default export with async to handle the Promise
 export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
-    // Await the params since it's a Promise
-    const { locale } = await params;
+    const locale = params.locale;
 
     // Validate locale
     if (!(locales as readonly string[]).includes(locale)) {
         notFound();
     }
 
-    // Load messages for the current locale
-    let messages;
-    try {
-        messages = (await import(`../../messages/${locale}.json`)).default;
-    } catch (error) {
-        console.error(`Could not load messages for locale: ${locale}`, error);
-        notFound();
-    }
+    // Load messages for the current locale using next-intl's getMessages
+    const messages = await getMessages({ locale });
 
     return (
         <html lang={locale} suppressHydrationWarning>

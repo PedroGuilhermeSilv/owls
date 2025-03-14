@@ -1,8 +1,5 @@
 import { getRequestConfig } from 'next-intl/server';
-
-// Definir locales diretamente para evitar problemas de importação
-const locales = ['en', 'pt'];
-const defaultLocale = 'en';
+import { defaultLocale, timeZone } from './settings';
 
 export default getRequestConfig(async ({ locale }) => {
     // Usar o locale padrão se não for fornecido
@@ -11,6 +8,7 @@ export default getRequestConfig(async ({ locale }) => {
     try {
         return {
             locale: currentLocale,
+            timeZone,
             messages: (await import(`../messages/${currentLocale}.json`)).default
         };
     } catch (error) {
@@ -18,6 +16,7 @@ export default getRequestConfig(async ({ locale }) => {
         // Fallback para o locale padrão se o arquivo não existir
         return {
             locale: defaultLocale,
+            timeZone,
             messages: (await import(`../messages/${defaultLocale}.json`)).default
         };
     }
