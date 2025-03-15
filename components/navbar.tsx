@@ -1,12 +1,12 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import OwlsLogo from "./owls-logo"
-import LanguageSwitcher from "./language-switcher"
 import { useLanguage } from "@/contexts/language-context"
+import { Menu, X } from "lucide-react"
+import Link from "next/link"
+import { useState } from "react"
+import LanguageSwitcher from "./language-switcher"
+import OwlsLogo from "./owls-logo"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -16,7 +16,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
-          <OwlsLogo />
+          <OwlsLogo size={40} />
           <span className="hidden text-xl font-bold text-orange-500 sm:inline-block">Owls</span>
         </div>
 

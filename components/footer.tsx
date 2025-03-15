@@ -1,5 +1,5 @@
+import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react"
 import Link from "next/link"
-import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react"
 import OwlsLogo from "./owls-logo"
 
 export default function Footer() {
@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid gap-8 lg:grid-cols-4">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <OwlsLogo />
+              <OwlsLogo size={40} />
               <span className="text-xl font-bold text-orange-500">Owls</span>
             </div>
             <p className="text-gray-500">
