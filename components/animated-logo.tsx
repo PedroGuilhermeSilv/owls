@@ -38,7 +38,7 @@ export default function AnimatedLogo({ className = "", size = 200 }: { className
       style={{ transform: "translateY(20px)" }}
     >
       <Image
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/owls-removebg-preview-kDLd1iRE2iNen4qyT2SHFXOKQt40TV.png"
+        src="/images/owls-logo.png"
         alt="Owls Logo"
         width={size}
         height={size}

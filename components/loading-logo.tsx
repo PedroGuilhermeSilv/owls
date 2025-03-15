@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import Image from "next/image"
+import { useEffect, useState } from "react"
 
 export default function LoadingLogo() {
   const [isLoading, setIsLoading] = useState(true)
@@ -21,7 +21,7 @@ export default function LoadingLogo() {
       <div className="flex flex-col items-center">
         <div className="animate-pulse">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/owls-removebg-preview-kDLd1iRE2iNen4qyT2SHFXOKQt40TV.png"
+            src="/images/owls-logo.png"
             alt="Owls Logo"
             width={120}
             height={120}

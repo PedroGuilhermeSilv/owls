@@ -1,9 +1,9 @@
 "use client"
 
-import { useRef, useState } from "react"
-import Image from "next/image"
+import Image from "next/image";
+import { useRef, useState } from "react";
 
-export default function OwlsLogo() {
+export default function OwlsLogo({ size, className, imageClassName, showText }: { size: number; className?: string; imageClassName?: string; showText?: boolean }) {
   const audioRef = useRef<HTMLAudioElement>(null)
   const [clickCount, setClickCount] = useState(0)
   const [lastClickTime, setLastClickTime] = useState(0)
@@ -27,17 +27,22 @@ export default function OwlsLogo() {
   }
 
   return (
-    <div className="relative cursor-pointer" onClick={handleClick}>
+    <div className={`relative cursor-pointer ${className}`} onClick={handleClick}>
       <Image
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/owls-removebg-preview-kDLd1iRE2iNen4qyT2SHFXOKQt40TV.png"
+        src="/images/owls-logo.png"
         alt="Owls Logo"
-        width={40}
-        height={40}
-        className="h-10 w-10 object-contain"
+        width={size}
+        height={size}
+        className={`h-10 w-10 object-contain transition-transform duration-300 hover:scale-110 ${imageClassName}`}
       />
       <audio ref={audioRef} src="/owl-sound.mp3" preload="auto" className="hidden">
         Your browser does not support the audio element.
       </audio>
+      {showText && (
+        <div className="text-center mt-2">
+          {clickCount}
+        </div>
+      )}
     </div>
   )
 }
