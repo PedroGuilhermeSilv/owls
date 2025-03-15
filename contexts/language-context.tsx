@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 
 type Language = "pt" | "en"
 
@@ -105,19 +105,23 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>("en")
+  const [mounted, setMounted] = useState(false)
 
-  // Load saved language preference from localStorage
+  // Load saved language preference from localStorage only on client side
   useEffect(() => {
+    setMounted(true)
     const savedLanguage = localStorage.getItem("language") as Language
     if (savedLanguage && (savedLanguage === "en" || savedLanguage === "pt")) {
       setLanguage(savedLanguage)
     }
   }, [])
 
-  // Save language preference to localStorage
+  // Save language preference to localStorage only on client side
   useEffect(() => {
-    localStorage.setItem("language", language)
-  }, [language])
+    if (mounted) {
+      localStorage.setItem("language", language)
+    }
+  }, [language, mounted])
 
   // Translation function
   const t = (key: string): string => {

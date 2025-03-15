@@ -1,12 +1,13 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { ExternalLink } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import AnimatedLogo from "./animated-logo"
 import { useLanguage } from "@/contexts/language-context"
+import { ExternalLink } from "lucide-react"
+import Image from "next/image"
+import { useEffect, useRef } from "react"
+import AnimatedLogo from "./animated-logo"
 
 export default function ProjectsSection() {
   const { t } = useLanguage()
@@ -29,13 +30,16 @@ export default function ProjectsSection() {
       { threshold: 0.1 },
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    // Store current ref value in a variable
+    const currentSectionRef = sectionRef.current
+
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef)
       }
     }
   }, [])
@@ -111,9 +115,11 @@ export default function ProjectsSection() {
               style={{ transform: "translateY(20px)" }}
             >
               <div className="aspect-video w-full overflow-hidden">
-                <img
+                <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
+                  width={600}
+                  height={340}
                   className="h-full w-full object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>

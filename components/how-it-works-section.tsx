@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useRef } from "react"
 import { useLanguage } from "@/contexts/language-context"
+import { useEffect, useRef } from "react"
 
 export default function HowItWorksSection() {
   const { language } = useLanguage()
@@ -12,7 +12,7 @@ export default function HowItWorksSection() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const steps = sectionRef.current?.querySelectorAll(".step")
+            const steps = sectionRef.current?.querySelectorAll(".step-item")
             steps?.forEach((step, index) => {
               setTimeout(() => {
                 step.classList.add("animate-in")
@@ -24,13 +24,16 @@ export default function HowItWorksSection() {
       { threshold: 0.1 },
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    // Store current ref value in a variable
+    const currentSectionRef = sectionRef.current;
+
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef)
       }
     }
   }, [])
@@ -88,9 +91,8 @@ export default function HowItWorksSection() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className={`step relative mb-12 flex opacity-0 transition-all duration-700 ${
-                index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-              }`}
+              className={`step relative mb-12 flex opacity-0 transition-all duration-700 ${index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                }`}
               style={{ transform: "translateY(20px)" }}
             >
               {/* Line connecting steps */}
@@ -100,9 +102,8 @@ export default function HowItWorksSection() {
 
               {/* Step number */}
               <div
-                className={`z-10 mr-8 flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-3xl font-bold text-white ${
-                  index % 2 === 1 ? "ml-8 mr-0" : ""
-                }`}
+                className={`z-10 mr-8 flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-3xl font-bold text-white ${index % 2 === 1 ? "ml-8 mr-0" : ""
+                  }`}
               >
                 {step.number}
               </div>

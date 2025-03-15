@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import Image from "next/image"
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function AnimatedLogo({ className = "", size = 200 }: { className?: string; size?: number }) {
   const logoRef = useRef<HTMLDivElement>(null)
@@ -11,20 +11,22 @@ export default function AnimatedLogo({ className = "", size = 200 }: { className
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in")
+            entry.target.classList.add("opacity-100")
           }
         })
       },
       { threshold: 0.1 },
     )
 
-    if (logoRef.current) {
-      observer.observe(logoRef.current)
+    const currentLogoRef = logoRef.current
+
+    if (currentLogoRef) {
+      observer.observe(currentLogoRef)
     }
 
     return () => {
-      if (logoRef.current) {
-        observer.unobserve(logoRef.current)
+      if (currentLogoRef) {
+        observer.unobserve(currentLogoRef)
       }
     }
   }, [])

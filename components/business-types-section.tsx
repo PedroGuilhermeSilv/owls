@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { ShoppingBag, Utensils, Scissors, Briefcase, Store, Truck, Home, Heart } from "lucide-react"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useLanguage } from "@/contexts/language-context"
+import { Briefcase, Heart, Home, Scissors, ShoppingBag, Store, Truck, Utensils } from "lucide-react"
+import { useEffect, useRef } from "react"
 
 export default function BusinessTypesSection() {
   const { language } = useLanguage()
@@ -27,13 +27,16 @@ export default function BusinessTypesSection() {
       { threshold: 0.1 },
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    // Store current ref value in a variable
+    const currentSectionRef = sectionRef.current;
+
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef)
       }
     }
   }, [])

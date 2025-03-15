@@ -1,13 +1,13 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { Mail, MapPin, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent } from "@/components/ui/card"
-import AnimatedLogo from "./animated-logo"
 import { useLanguage } from "@/contexts/language-context"
+import { Mail, MapPin, Phone } from "lucide-react"
+import { useEffect, useRef } from "react"
+import AnimatedLogo from "./animated-logo"
 
 export default function ContactSection() {
   const { t, language } = useLanguage()
@@ -25,13 +25,16 @@ export default function ContactSection() {
       { threshold: 0.1 },
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    // Store current ref value in a variable
+    const currentSectionRef = sectionRef.current;
+
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef)
       }
     }
   }, [])

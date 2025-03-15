@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/language-context"
 import { ArrowRight, Briefcase, Scissors, ShoppingBag, Store, Utensils } from "lucide-react"
+import Image from "next/image"
 import AnimatedLogo from "./animated-logo"
 import Navbar from "./navbar"
 
@@ -75,9 +76,11 @@ export default function HeroSection() {
           </Button>
         </div>
         <div className="mt-12 w-full max-w-4xl overflow-hidden rounded-lg border border-gray-200 shadow-xl transition-all duration-500 hover:shadow-2xl">
-          <img
-            src="/placeholder.svg?height=600&width=1200"
+          <Image
+            src="/placeholder.svg"
             alt={language === "en" ? "Owls Software for Small Business" : "Software Owls para Pequenos Negócios"}
+            width={1200}
+            height={600}
             className="w-full object-cover transition-transform duration-500 hover:scale-105"
           />
         </div>

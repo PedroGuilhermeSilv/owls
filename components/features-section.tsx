@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { Clock, DollarSign, Users, Smile, ShieldCheck, Headphones } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useLanguage } from "@/contexts/language-context"
+import { Clock, DollarSign, Headphones, ShieldCheck, Smile, Users } from "lucide-react"
+import { useEffect, useRef } from "react"
 
 export default function FeaturesSection() {
   const { language } = useLanguage()
@@ -26,13 +26,16 @@ export default function FeaturesSection() {
       { threshold: 0.1 },
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    // Store current ref value in a variable
+    const currentSectionRef = sectionRef.current
+
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef)
       }
     }
   }, [])

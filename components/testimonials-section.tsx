@@ -1,9 +1,9 @@
 "use client"
 
-import { useEffect, useRef } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { useLanguage } from "@/contexts/language-context"
+import { useEffect, useRef } from "react"
 
 export default function TestimonialsSection() {
   const { language } = useLanguage()
@@ -18,7 +18,7 @@ export default function TestimonialsSection() {
             cards?.forEach((card, index) => {
               setTimeout(() => {
                 card.classList.add("animate-in")
-              }, index * 200)
+              }, index * 150)
             })
           }
         })
@@ -26,13 +26,16 @@ export default function TestimonialsSection() {
       { threshold: 0.1 },
     )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+    // Store current ref value in a variable
+    const currentSectionRef = sectionRef.current
+
+    if (currentSectionRef) {
+      observer.observe(currentSectionRef)
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+      if (currentSectionRef) {
+        observer.unobserve(currentSectionRef)
       }
     }
   }, [])
