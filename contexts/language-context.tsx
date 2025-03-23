@@ -93,6 +93,58 @@ const translations: Translations = {
     en: "Business Hours",
     pt: "Horário de Funcionamento",
   },
+  "footer.company": {
+    en: "Company",
+    pt: "Empresa"
+  },
+  "footer.about": {
+    en: "About Us",
+    pt: "Sobre Nós"
+  },
+  "footer.careers": {
+    en: "Careers",
+    pt: "Carreiras"
+  },
+  "footer.blog": {
+    en: "Blog",
+    pt: "Blog"
+  },
+  "footer.support": {
+    en: "Support",
+    pt: "Suporte"
+  },
+  "footer.help": {
+    en: "Help Center",
+    pt: "Central de Ajuda"
+  },
+  "footer.faq": {
+    en: "FAQ",
+    pt: "Perguntas Frequentes"
+  },
+  "footer.contact": {
+    en: "Contact Us",
+    pt: "Fale Conosco"
+  },
+  "footer.legal": {
+    en: "Legal",
+    pt: "Legal"
+  },
+  "footer.terms": {
+    en: "Terms of Service",
+    pt: "Termos de Serviço"
+  },
+  "footer.privacy": {
+    en: "Privacy Policy",
+    pt: "Política de Privacidade"
+  },
+  "footer.cookies": {
+    en: "Cookie Policy",
+    pt: "Política de Cookies"
+  },
+  "footer.rights": {
+    en: "All rights reserved",
+    pt: "Todos os direitos reservados"
+  }
 }
 
 type LanguageContextType = {

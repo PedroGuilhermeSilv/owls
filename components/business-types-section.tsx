@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useLanguage } from "@/contexts/language-context"
-import { Briefcase, Heart, Home, Scissors, ShoppingBag, Store, Truck, Utensils } from "lucide-react"
+import { Scissors, ShoppingBag, Store, Utensils } from "lucide-react"
 import { useEffect, useRef } from "react"
 
 export default function BusinessTypesSection() {
@@ -78,18 +78,7 @@ export default function BusinessTypesSection() {
           ? ["Online Booking", "Staff Scheduling", "Client Management"]
           : ["Agendamento Online", "Escala de Funcionários", "Gestão de Clientes"],
     },
-    {
-      icon: <Briefcase className="h-12 w-12 text-orange-500" />,
-      title: language === "en" ? "Professional Services" : "Serviços Profissionais",
-      description:
-        language === "en"
-          ? "Track client projects, manage billing, and organize your workflow to deliver services efficiently."
-          : "Acompanhe projetos de clientes, gerencie faturamento e organize seu fluxo de trabalho para entregar serviços com eficiência.",
-      features:
-        language === "en"
-          ? ["Project Tracking", "Time Billing", "Document Management"]
-          : ["Acompanhamento de Projetos", "Faturamento por Tempo", "Gestão de Documentos"],
-    },
+
     {
       icon: <Store className="h-12 w-12 text-orange-500" />,
       title: language === "en" ? "Small Shops" : "Pequenas Lojas",
@@ -102,42 +91,9 @@ export default function BusinessTypesSection() {
           ? ["Easy Sales", "Basic Inventory", "Customer Records"]
           : ["Vendas Fáceis", "Estoque Básico", "Registros de Clientes"],
     },
-    {
-      icon: <Truck className="h-12 w-12 text-orange-500" />,
-      title: language === "en" ? "Delivery Services" : "Serviços de Entrega",
-      description:
-        language === "en"
-          ? "Manage routes, track deliveries, and keep your customers informed about their orders."
-          : "Gerencie rotas, acompanhe entregas e mantenha seus clientes informados sobre seus pedidos.",
-      features:
-        language === "en"
-          ? ["Route Planning", "Delivery Tracking", "Customer Notifications"]
-          : ["Planejamento de Rotas", "Rastreamento de Entregas", "Notificações para Clientes"],
-    },
-    {
-      icon: <Home className="h-12 w-12 text-orange-500" />,
-      title: language === "en" ? "Home Services" : "Serviços Domésticos",
-      description:
-        language === "en"
-          ? "Schedule appointments, manage your team, and provide estimates for home service businesses."
-          : "Agende compromissos, gerencie sua equipe e forneça orçamentos para empresas de serviços domésticos.",
-      features:
-        language === "en"
-          ? ["Appointment Scheduling", "Team Management", "Quote Generation"]
-          : ["Agendamento", "Gestão de Equipe", "Geração de Orçamentos"],
-    },
-    {
-      icon: <Heart className="h-12 w-12 text-orange-500" />,
-      title: language === "en" ? "Healthcare Providers" : "Provedores de Saúde",
-      description:
-        language === "en"
-          ? "Manage patient appointments, records, and billing for small healthcare practices."
-          : "Gerencie consultas, registros e faturamento de pacientes para pequenas práticas de saúde.",
-      features:
-        language === "en"
-          ? ["Patient Records", "Appointment Scheduling", "Billing Management"]
-          : ["Registros de Pacientes", "Agendamento de Consultas", "Gestão de Faturamento"],
-    },
+
+
+
   ]
 
   return (

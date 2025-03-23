@@ -2,13 +2,22 @@
 
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/language-context"
-import { ArrowRight, Briefcase, Scissors, ShoppingBag, Store, Utensils } from "lucide-react"
-import Image from "next/image"
+import { ArrowRight, Scissors, ShoppingBag, Store, Utensils, Volume2, VolumeX } from "lucide-react"
+import { useRef, useState } from "react"
 import AnimatedLogo from "./animated-logo"
 import Navbar from "./navbar"
 
 export default function HeroSection() {
   const { language } = useLanguage()
+  const [isMuted, setIsMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted
+      setIsMuted(!isMuted)
+    }
+  }
 
   return (
     <section className="relative">
@@ -55,10 +64,6 @@ export default function HeroSection() {
             <span>{language === "en" ? "Beauty Salons" : "Salões de Beleza"}</span>
           </div>
           <div className="flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-orange-500">
-            <Briefcase size={18} />
-            <span>{language === "en" ? "Professional Services" : "Serviços Profissionais"}</span>
-          </div>
-          <div className="flex items-center gap-2 rounded-full bg-orange-100 px-4 py-2 text-orange-500">
             <Store size={18} />
             <span>{language === "en" ? "Local Shops" : "Comércios Locais"}</span>
           </div>
@@ -75,14 +80,30 @@ export default function HeroSection() {
             {language === "en" ? "Watch Demo" : "Assistir Demo"}
           </Button>
         </div>
-        <div className="mt-12 w-full max-w-4xl overflow-hidden rounded-lg border border-gray-200 shadow-xl transition-all duration-500 hover:shadow-2xl">
-          <Image
-            src="/placeholder.svg"
-            alt={language === "en" ? "Owls Software for Small Business" : "Software Owls para Pequenos Negócios"}
-            width={1200}
-            height={600}
-            className="w-full object-cover transition-transform duration-500 hover:scale-105"
-          />
+        <div className="mt-12 w-full max-w-4xl overflow-hidden rounded-lg border border-gray-200 shadow-xl transition-all duration-500 hover:shadow-2xl relative">
+          <video
+            ref={videoRef}
+            className="w-full object-cover transition-transform duration-500 hover:scale-105 rounded-lg shadow-xl"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src="video-inicial.mp4" type="video/mp4" />
+            {language === "en"
+              ? "Your browser does not support the video tag."
+              : "Seu navegador não suporta a tag de vídeo."}
+          </video>
+
+          <Button
+            onClick={toggleMute}
+            variant="secondary"
+            size="icon"
+            className="absolute bottom-4 right-4 bg-white/70 backdrop-blur-sm hover:bg-white/90 transition-all"
+            aria-label={isMuted ? (language === "en" ? "Unmute" : "Ativar som") : (language === "en" ? "Mute" : "Silenciar")}
+          >
+            {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+          </Button>
         </div>
       </div>
     </section>

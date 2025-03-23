@@ -35,7 +35,7 @@ export default function OwlsLogo({ size, className, imageClassName, showText }: 
         height={size}
         className={`h-10 w-10 object-contain transition-transform duration-300 hover:scale-110 ${imageClassName}`}
       />
-      <audio ref={audioRef} src="/owl-sound.mp3" preload="auto" className="hidden">
+      <audio ref={audioRef} src="/owl-sound.wav" preload="auto" className="hidden">
         Your browser does not support the audio element.
       </audio>
       {showText && (
